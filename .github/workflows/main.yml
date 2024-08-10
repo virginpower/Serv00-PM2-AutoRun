@@ -23,6 +23,7 @@ jobs:
       id: check_service
       run: |
         a=$(curl -I -s -connect-timeout 2 https://vp.prdnb.us.kg|head -1|sed 's/ /\n/g' | sed -n '2p' | tr -d '\r\n')
+        echo $a
         if [ $a = '426' ];then
           echo "service_status=running" >> $GITHUB_ENV
         else
